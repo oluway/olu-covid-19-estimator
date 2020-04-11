@@ -10,7 +10,6 @@ const covid19ImpactEstimator = (data) => {
     }
     return days;
   };
-
   return {
     data: {},
     impact: {
@@ -24,4 +23,3 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 export default covid19ImpactEstimator;
-  
