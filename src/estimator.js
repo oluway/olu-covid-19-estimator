@@ -10,9 +10,9 @@ const covid19ImpactEstimator = (data) => {
     }
     return days;
   };
-  let impact15 =  0.15 * ((data.reportedCases * 10) * (2 ** (estimator())));
-  let severe15 = 0.15 * ((data.reportedCases * 50) * (2 ** (estimator())));
-  let expectedBed = (data.totalHospitalBeds * 0.35);
+  const impact15 = 0.15 * ((data.reportedCases * 10) * (2 ** (estimator())));
+  const severe15 = 0.15 * ((data.reportedCases * 50) * (2 ** (estimator())));
+  const expectedBed = (data.totalHospitalBeds * 0.35);
   return {
     data: {},
     impact: {
