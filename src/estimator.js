@@ -12,10 +12,8 @@ const covid19ImpactEstimator = (data) => {
   };
   const impactInfection = (data.reportedCases * 10) * (2 ** (estimator()));
   const severeInfection = (data.reportedCases * 50) * (2 ** (estimator()));
-  const impact2 = 0.02 * Math.trunc(((data.reportedCases * 10)
-  * (2 ** (estimator()))));
-  const severe2 = 0.02 * Math.trunc(((data.reportedCases * 50)
-  * (2 ** (estimator()))));
+  const impact2 = 0.02 * ((data.reportedCases * 10) * (2 ** (estimator())));
+  const severe2 = 0.02 * ((data.reportedCases * 50) * (2 ** (estimator())));
   const impact5 = Math.trunc(0.05 * ((data.reportedCases * 10)
   * (2 ** (estimator()))));
   const severe5 = Math.trunc(0.05 * ((data.reportedCases * 50)
