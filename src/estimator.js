@@ -2,7 +2,7 @@ const covid19ImpactEstimator = (data) => {
   const estimator = () => {
     let days;
     if (data.periodType === 'days') {
-      days = Math.trunc((data.timeToElapse * 1) / 3);
+      days = Math.trunc((data.timeToElapse) / 3);
     } else if (data.periodType === 'weeks') {
       days = Math.trunc((data.timeToElapse * 7) / 3);
     } else if (data.periodType === 'months') {
@@ -13,11 +13,11 @@ const covid19ImpactEstimator = (data) => {
   const checkDay = (dayValue) => {
     let value = dayValue;
     if (data.periodType === 'days') {
-      value = 1;
+      value = Math.trunc((data.timeToElapse));
     } else if (data.periodType === 'weeks') {
-      value = 7;
+      value = Math.trunc((data.timeToElapse * 7));
     } else if (data.periodType === 'months') {
-      value = 30;
+      value = Math.trunc((data.timeToElapse * 30));
     }
     return value;
   };
