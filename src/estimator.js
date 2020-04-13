@@ -26,8 +26,8 @@ const covid19ImpactEstimator = (data) => {
       infectionsByRequestedTime: impactInfection,
       severeCasesByRequestedTime: Math.trunc(impact15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - impact15),
-      casesForICUByRequestedTime: impact5 | 0,
-      casesForVentilatorsByRequestedTime: impact2 | 0,
+      casesForICUByRequestedTime: ~~(impact5),
+      casesForVentilatorsByRequestedTime: impact2,
       dollarsInFlight: Math.trunc((impactInfection * 0.65) * 1.5 * 30)
     },
     severeImpact: {
@@ -35,8 +35,8 @@ const covid19ImpactEstimator = (data) => {
       infectionsByRequestedTime: severeInfection,
       severeCasesByRequestedTime: Math.trunc(severe15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - severe15),
-      casesForICUByRequestedTime: severe5 | 0,
-      casesForVentilatorsByRequestedTime: severe2 | 0,
+      casesForICUByRequestedTime: ~~(severe5),
+      casesForVentilatorsByRequestedTime: severe2,
       dollarsInFlight: Math.trunc((severeInfection * 0.65) * 1.5 * 30)
     }
   };
