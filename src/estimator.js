@@ -10,8 +10,8 @@ const covid19ImpactEstimator = (data) => {
     }
     return days;
   };
-  const checkDay = (dayValue) => {
-    let value = dayValue;
+  const checkDay = () => {
+    let value;
     if (data.periodType === 'days') {
       value = Math.trunc((data.timeToElapse));
     } else if (data.periodType === 'weeks') {
@@ -40,7 +40,7 @@ const covid19ImpactEstimator = (data) => {
       casesForICUByRequestedTime: Math.trunc(impact5),
       casesForVentilatorsByRequestedTime: Math.trunc(impact2),
       dollarsInFlight: Math.trunc((impactInfection * data.avgDailyIncomeInUSD
-        * data.avgDailyIncomePopulation) / checkDay(data.periodType))
+        * data.avgDailyIncomePopulation) / checkDay())
     },
     severeImpact: {
       currentlyInfected: data.reportedCases * 50,
@@ -50,7 +50,7 @@ const covid19ImpactEstimator = (data) => {
       casesForICUByRequestedTime: Math.trunc(severe5),
       casesForVentilatorsByRequestedTime: Math.trunc(severe2),
       dollarsInFlight: Math.trunc((severeInfection * data.avgDailyIncomeInUSD
-        * data.avgDailyIncomePopulation) / checkDay(data.periodType))
+        * data.avgDailyIncomePopulation) / checkDay())
     }
   };
 };
