@@ -12,10 +12,10 @@ const covid19ImpactEstimator = (data) => {
   };
   const impactInfection = (data.reportedCases * 10) * (2 ** (estimator()));
   const severeInfection = (data.reportedCases * 50) * (2 ** (estimator()));
+  const impact2 = 0.02 * ((data.reportedCases * 10) * (2 ** (estimator())));
+  const severe2 = 0.02 * ((data.reportedCases * 50) * (2 ** (estimator())));
   const impact5 = 0.05 * ((data.reportedCases * 10) * (2 ** (estimator())));
   const severe5 = 0.05 * ((data.reportedCases * 50) * (2 ** (estimator())));
-  const impact2 = 0.02 * impact5;
-  const severe2 = 0.02 * severe5;
   const impact15 = 0.15 * ((data.reportedCases * 10) * (2 ** (estimator())));
   const severe15 = 0.15 * ((data.reportedCases * 50) * (2 ** (estimator())));
   const expectedBed = (data.totalHospitalBeds * 0.35);
@@ -26,9 +26,10 @@ const covid19ImpactEstimator = (data) => {
       infectionsByRequestedTime: impactInfection,
       severeCasesByRequestedTime: Math.trunc(impact15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - impact15),
-      casesForICUByRequestedTime: impact5,
-      casesForVentilatorsByRequestedTime: impact2,
-      dollarsInFlight: Math.trunc((impactInfection * 0.65) * 1.5 * 30)
+      casesForICUByRequestedTime: Math.trunc(impact5),
+      casesForVentilatorsByRequestedTime: Math.trunc(impact2),
+      dollarsInFlight: Math.trunc(((impactInfection * 0.65) * 1.5 * 30)
+      / (2 ** (estimator())))
     },
     severeImpact: {
       currentlyInfected: data.reportedCases * 50,
