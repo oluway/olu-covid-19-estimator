@@ -33,7 +33,7 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: {},
     impact: {
-      currentlyInfected: 10 * data.reportedCases,
+      currentlyInfected: data.reportedCases * 10,
       infectionsByRequestedTime: impactInfection,
       severeCasesByRequestedTime: Math.trunc(impact15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - impact15),
@@ -43,7 +43,7 @@ const covid19ImpactEstimator = (data) => {
         * data.region.avgDailyIncomePopulation) / checkDay())
     },
     severeImpact: {
-      currentlyInfected: 50 * data.reportedCases,
+      currentlyInfected: data.reportedCases * 50,
       infectionsByRequestedTime: severeInfection,
       severeCasesByRequestedTime: Math.trunc(severe15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - severe15),
