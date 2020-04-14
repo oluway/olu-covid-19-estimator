@@ -21,8 +21,8 @@ const covid19ImpactEstimator = (data) => {
     }
     return value;
   };
-  const impactInfections = (data.reportedCases * 10) * (2 ** (estimator()));
-  const severeInfections = (data.reportedCases * 50) * (2 ** (estimator()));
+  const impactInfection = (data.reportedCases * 10) * (2 ** (estimator()));
+  const severeInfection = (data.reportedCases * 50) * (2 ** (estimator()));
   const impact2 = 0.02 * ((data.reportedCases * 10) * (2 ** (estimator())));
   const severe2 = 0.02 * ((data.reportedCases * 50) * (2 ** (estimator())));
   const impact5 = 0.05 * ((data.reportedCases * 10) * (2 ** (estimator())));
@@ -34,22 +34,22 @@ const covid19ImpactEstimator = (data) => {
     data: {},
     impact: {
       currentlyInfected: data.reportedCases * 10,
-      infectionsByRequestedTime: impactInfections,
+      infectionsByRequestedTime: impactInfection,
       severeCasesByRequestedTime: Math.trunc(impact15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - impact15),
       casesForICUByRequestedTime: Math.trunc(impact5),
       casesForVentilatorsByRequestedTime: Math.trunc(impact2),
-      dollarsInFlight: Math.trunc((impactInfections * data.region.avgDailyIncomeInUSD
+      dollarsInFlight: Math.trunc((impactInfection * data.region.avgDailyIncomeInUSD
         * data.region.avgDailyIncomePopulation) / checkDay())
     },
     severeImpact: {
       currentlyInfected: data.reportedCases * 50,
-      infectionsByRequestedTime: severeInfections,
+      infectionsByRequestedTime: severeInfection,
       severeCasesByRequestedTime: Math.trunc(severe15),
       hospitalBedsByRequestedTime: Math.trunc(expectedBed - severe15),
       casesForICUByRequestedTime: Math.trunc(severe5),
       casesForVentilatorsByRequestedTime: Math.trunc(severe2),
-      dollarsInFlight: Math.trunc((severeInfections * data.region.avgDailyIncomeInUSD
+      dollarsInFlight: Math.trunc((severeInfection * data.region.avgDailyIncomeInUSD
         * data.region.avgDailyIncomePopulation) / checkDay())
     }
   };
